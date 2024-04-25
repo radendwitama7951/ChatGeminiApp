@@ -80,6 +80,7 @@ dependencies {
     implementation(libs.core)
     implementation(libs.androidx.navigation.common.ktx)
     implementation(libs.androidx.navigation.compose)
+    implementation(libs.androidx.constraintlayout)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
@@ -89,9 +90,14 @@ dependencies {
     debugImplementation(libs.androidx.ui.test.manifest)
 
     // Compose
-    // Markdown compose
-    implementation("com.github.jeziellago:compose-markdown:0.4.1")
+    // Constraint Layout
+    implementation("androidx.constraintlayout:constraintlayout-compose:1.0.1")
+    // System bar
+    implementation("com.google.accompanist:accompanist-systemuicontroller:0.35.0-alpha")
 
+    // Markdown compose
+//    implementation("com.github.jeziellago:compose-markdown:0.4.1")
+    implementation("com.yazantarifi:markdown-compose:1.0.4")
 
     // Room
     val room_version = "2.6.1"

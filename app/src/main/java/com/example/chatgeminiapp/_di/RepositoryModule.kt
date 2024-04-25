@@ -1,7 +1,7 @@
 package com.example.chatgeminiapp._di
 
-import com.example.chatgeminiapp.data.remote.api.GeminiChatApiImpl
-import com.example.chatgeminiapp.data._interfaces.GeminiChatApi
+import com.example.chatgeminiapp.data.remote.gemini_chat.api.GeminiChatApiImpl
+import com.example.chatgeminiapp.data.remote.gemini_chat.interfaces.GeminiChatApi
 import com.example.chatgeminiapp.data.repositories.GeminiChatRepositoryImpl
 import com.example.chatgeminiapp.domain.repositories.GeminiChatRepository
 import dagger.Binds

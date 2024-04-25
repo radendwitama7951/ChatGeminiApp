@@ -12,7 +12,7 @@ import coil.size.Size
 import com.example.chatgeminiapp.data.local.room.dao.ChatGroupDao
 import com.example.chatgeminiapp.data.local.room.dao.ChatItemDao
 import com.example.chatgeminiapp.data.local.room.database.AppDatabase
-import com.example.chatgeminiapp.data._interfaces.GeminiChatApi
+import com.example.chatgeminiapp.data.remote.gemini_chat.interfaces.GeminiChatApi
 import com.example.chatgeminiapp.domain.models.gemini_chat.ChatGroup
 import com.example.chatgeminiapp.domain.models.gemini_chat.ChatItem
 import com.example.chatgeminiapp._common.resources.Constants.TEXT_PART
@@ -24,7 +24,6 @@ import dagger.hilt.android.testing.HiltAndroidRule
 import dagger.hilt.android.testing.HiltAndroidTest
 import junit.framework.TestCase.assertEquals
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.withContext
 import org.junit.After

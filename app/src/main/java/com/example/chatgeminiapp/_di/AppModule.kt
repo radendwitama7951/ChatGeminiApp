@@ -1,17 +1,14 @@
 package com.example.chatgeminiapp._di
 
 import android.app.Application
-import android.content.Context
 import androidx.room.Room
-import coil.ImageLoader
 import com.example.chatgeminiapp.data.local.room.dao.ChatGroupDao
 import com.example.chatgeminiapp.data.local.room.dao.ChatItemDao
 import com.example.chatgeminiapp.data.local.room.database.AppDatabase
-import com.example.chatgeminiapp.data.remote.api.GeminiChatApiImpl
+import com.example.chatgeminiapp.data.remote.gemini_chat.api.GeminiChatApiImpl
 import com.example.chatgeminiapp._common.resources.Constants.GEMINI_API_KEY
 import com.example.chatgeminiapp._common.resources.Constants.GEMINI_MODEL
 import com.example.chatgeminiapp._common.resources.Constants.GEMINI_MODEL_VISION
-import com.example.chatgeminiapp._common.utils.CoilImageLoader
 import com.google.ai.client.generativeai.GenerativeModel
 import com.google.ai.client.generativeai.type.BlockThreshold
 import com.google.ai.client.generativeai.type.HarmCategory
@@ -21,7 +18,6 @@ import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import javax.inject.Named
 import javax.inject.Qualifier
 import javax.inject.Singleton
 

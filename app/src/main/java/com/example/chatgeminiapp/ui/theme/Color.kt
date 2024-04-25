@@ -23,3 +23,6 @@ val light_primary = Color(0xFF0000FF)
 val light_secondary = Color(0xFF87CEEB)
 val light_background = Color(0xFFFFFFFF)
 val light_surface = Color(0xFFE0E0E0)
+
+val gemini_primary = Color(0xFF4285F4)
+val gemini_secondary = Color(0xFFD96570)

@@ -9,4 +9,6 @@ object Constants {
     val GEMINI_API_KEY = BuildConfig.GEMINI_API_KEY
     val TEXT_PART = 0
     val IMAGE_PART = 1
+    val USER_ROLE = 1
+    val MODEL_ROLE = 0
 }
