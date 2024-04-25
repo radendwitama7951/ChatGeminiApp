@@ -7,7 +7,7 @@ import com.example.chatgeminiapp.data.local.room.dao.ChatItemDao
 import com.example.chatgeminiapp.domain.models.gemini_chat.ChatGroup
 import com.example.chatgeminiapp.domain.models.gemini_chat.ChatItem
 
-@Database(entities = [ChatGroup::class, ChatItem::class], version = 3)
+@Database(entities = [ChatGroup::class, ChatItem::class], version = 1)
 abstract class AppDatabase: RoomDatabase() {
     abstract val chatGroupDao: ChatGroupDao
     abstract val chatItemDao: ChatItemDao

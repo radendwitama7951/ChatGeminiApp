@@ -1,15 +1,29 @@
 package com.example.chatgeminiapp.presentation.gemini_chat.chats
 
 import android.graphics.Bitmap
-import android.graphics.drawable.BitmapDrawable
-import androidx.compose.ui.platform.LocalContext
-import androidx.core.content.ContextCompat
-import com.example.chatgeminiapp.R
-import com.example.chatgeminiapp.domain.models.gemini_chat.LocalChat
+import com.example.chatgeminiapp.domain.models.gemini_chat.InternalChat
+import com.example.chatgeminiapp.domain.models.gemini_chat.InternalChatGroup
 
 data class ChatsState(
-    val chatList: List<LocalChat> = mutableListOf(),
+    /*
+    * Data State
+    * */
+    val selectedGroup: Long? = null,
+    val chatGroups: List<InternalChatGroup> = emptyList<InternalChatGroup>(),
+    val chatList: List<InternalChat> = emptyList<InternalChat>(),
+
+    /*
+    * Screen State
+    * */
+    val isRequest: Boolean = false,
+    val isLoading: Boolean = false,
+
+
+    /*
+    * Input State
+    * */
     val prompt: String = "",
-    val bitmap: Bitmap? = null,
-    val bitmapUri: String = ""
+//    val bitmap: Bitmap? = null,
+    val bitmapCroppedUri: String? = null,
+    val bitmapSourceUri: String? = null
 )

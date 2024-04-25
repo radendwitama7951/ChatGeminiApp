@@ -4,7 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity()
 data class ChatGroup (
 
     @PrimaryKey(autoGenerate = true)
@@ -12,5 +12,7 @@ data class ChatGroup (
 
     @ColumnInfo(name = "created_at")
     val createdAt: Long = System.currentTimeMillis(),
-    val title: String,
+    @ColumnInfo(name = "edited_at")
+    val editedAt: Long = System.currentTimeMillis(),
+    val title: String? = null,
 )

@@ -87,7 +87,7 @@ private fun Modifier.shimmerEffect(durationMillis: Int) = composed {
 
 @Preview(showBackground = true, uiMode = UI_MODE_NIGHT_YES)
 @Composable
-fun AppChatShimmerEffectPreview(
+private fun AppChatShimmerEffectPreview(
 ) {
     ChatGeminiAppTheme {
         Surface (modifier = Modifier.fillMaxSize()) {

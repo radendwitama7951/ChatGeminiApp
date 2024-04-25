@@ -19,14 +19,14 @@ interface ChatGroupDao {
     suspend fun delete(chatGroup: ChatGroup)
 
     @Query("SELECT * FROM ChatGroup")
-    fun getAll(): Flow<List<ChatGroup>>
+    suspend fun getAll(): List<ChatGroup>
 
     @Query("SELECT * FROM ChatGroup WHERE id=:id")
     suspend fun getById(id: Long): ChatGroup
 
     @Transaction
     @Query("SELECT * FROM ChatGroup")
-    fun getFlatAll(): Flow<List<ChatGroupWithChatItems>>
+    suspend fun getFlatAll(): List<ChatGroupWithChatItems>
 
     @Transaction
     @Query("SELECT * FROM ChatGroup WHERE id=:id")

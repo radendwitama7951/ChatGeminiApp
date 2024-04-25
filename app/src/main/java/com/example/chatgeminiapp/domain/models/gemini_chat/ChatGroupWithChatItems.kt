@@ -7,7 +7,7 @@ data class ChatGroupWithChatItems(
     @Embedded val prop: ChatGroup,
     @Relation(
         parentColumn = "id",
-        entityColumn = "chatGroupOwner"
+        entityColumn = "chatGroupOwner",
     )
     val chatItems: List<ChatItem>
 )

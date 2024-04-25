@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <color name="gemini_secondary">#FFD96570</color>
+    <color name="gemini_primary">#FF4285F4</color>
     <color name="gemini_deep_purple">#FF800080</color>
     <color name="gemini_deep_blue">#FF0000FF</color>
     <color name="purple_200">#FFBB86FC</color>

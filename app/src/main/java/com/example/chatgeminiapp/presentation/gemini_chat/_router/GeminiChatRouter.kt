@@ -26,32 +26,16 @@ fun GeminiChatRouter(
         ) {
             composable(route = GeminiChatRoute.ChatsScreen.route) {
                 val viewModel: ChatsViewModel = hiltViewModel()
-                val state = viewModel.state.copy(
-                    bitmapUri = navController.previousBackStackEntry?.savedStateHandle?.get<String>("uri")
-                        ?: ""
-                )
+                val state = viewModel.state
                 ChatsScreen(
                     state = state,
                     event = viewModel::onEvent,
-                    navigateToImageSelector = {uri ->
-                        navController.currentBackStackEntry?.savedStateHandle?.set("uri", uri)
-                        navController.navigate(
-                            route = GeminiChatRoute.ImageSelector.route
-                        )
-                    }
                 )
             }
 
             composable(route = GeminiChatRoute.ImageSelector.route) {
                 val viewModel: ImageSelectorViewModel = hiltViewModel()
-                val state = viewModel.state.copy(
-                    bitmapUri = navController.previousBackStackEntry?.savedStateHandle?.get<String>("uri")
-                        ?: ""
-                )
-                BackHandler (true) {
-                    navController.navigate(GeminiChatRoute.ChatsScreen.route)
-                    navController.currentBackStackEntry?.savedStateHandle?.set("uri", state.bitmapUri)
-                }
+                val state = viewModel.state
                 ImageSelectorScreen(
                     state = state,
                     event = viewModel::onEvent,
