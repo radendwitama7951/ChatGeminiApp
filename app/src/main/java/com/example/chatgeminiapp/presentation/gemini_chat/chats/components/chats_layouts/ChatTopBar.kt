@@ -30,24 +30,16 @@ import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.rememberInfiniteTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.background
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.draw.drawWithContent
-import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.BlendMode
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.graphics.drawscope.rotate
-import androidx.compose.ui.graphics.drawscope.translate
 import androidx.compose.ui.unit.Dp
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -56,7 +48,7 @@ fun ChatTopBar(
     modifier: Modifier = Modifier,
     showActionsButton: Boolean = true,
     onDrawerToggle: () -> Unit = {},
-    onProfileToggle: () -> Unit = {},
+    onProfileAction: () -> Unit = {},
     onNewChatGroup: () -> Unit = {},
     onMoreAction: () -> Unit = {},
     isLoading: Boolean,
@@ -118,7 +110,7 @@ fun ChatTopBar(
                 }
 
             }
-            IconButton(onClick = { /* do something */ }) {
+            IconButton(onClick = onProfileAction) {
                 Image(
                     painter = painterResource(id = R.drawable.default_user_avatar), // Replace with your avatar image
                     contentDescription = "User Avatar",

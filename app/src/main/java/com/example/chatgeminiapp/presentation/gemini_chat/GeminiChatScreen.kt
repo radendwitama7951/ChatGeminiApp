@@ -8,6 +8,8 @@ import androidx.compose.ui.Modifier
 import com.example.chatgeminiapp.presentation.gemini_chat._router.GeminiChatRouter
 
 @Composable
-fun GeminiChatScreen() {
-    GeminiChatRouter()
+fun GeminiChatScreen(
+    onNavigateToProfile: (Long) -> Unit = {}
+) {
+    GeminiChatRouter(onNavigateToProfile = onNavigateToProfile)
 }

@@ -2,6 +2,7 @@ package com.example.chatgeminiapp.presentation._app._routing
 
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavOptions
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.navigation
@@ -22,16 +23,25 @@ fun AppRouter(
     NavHost(navController = navController, startDestination = startDestination) {
         navigation(
             route = AppRoute.AppRootNavigation.route,
-            startDestination = AppRoute.ProfileScreen.route
+            startDestination = AppRoute.AppProfile.route
         ) {
-            composable(route = AppRoute.ProfileScreen.route) {
-                val viewModel: ProfileViewModel = hiltViewModel()
-                val state = viewModel.state
-                ProfileScreen(state = state, event = viewModel::onEvent)
+            composable(route = AppRoute.AppProfile.route) { navBackStackEntry ->
+                ProfileScreen(
+                    onNavigateToGeminiChat = {
+                        navController.navigate(AppRoute.AppGeminiChat.route) {
+                            popUpTo(AppRoute.AppProfile.route) {
+                                inclusive = true
+                            }
+                        }
+                    }
+                )
             }
-
-            composable(route = AppRoute.GeminiChatScreen.route) {
-                GeminiChatScreen()
+            composable(route = AppRoute.AppGeminiChat.route) {
+                GeminiChatScreen(
+                    onNavigateToProfile = {
+                        navController.navigate(AppRoute.AppProfile.route)
+                    }
+                )
             }
         }
 

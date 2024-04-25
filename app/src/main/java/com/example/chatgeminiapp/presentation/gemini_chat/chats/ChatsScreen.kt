@@ -33,11 +33,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.tooling.preview.Preview
-import androidx.test.core.app.ApplicationProvider
 import coil.ImageLoader
 import coil.request.ImageRequest
 import coil.request.SuccessResult
 import coil.size.Size
+import com.example.chatgeminiapp._common.resources.Constants.GEMINI_API_KEY
 import com.example.chatgeminiapp.domain.models.gemini_chat.InternalChatGroup
 import com.example.chatgeminiapp.presentation._common.resources.Dimens.mediumPadding2
 import com.example.chatgeminiapp.presentation._common.resources.Dimens.smallPadding1
@@ -49,7 +49,11 @@ import com.example.chatgeminiapp.presentation.gemini_chat.chats.components.chats
 import com.example.chatgeminiapp.presentation.gemini_chat.chats.components.chats_actions.ImageSelector
 import com.example.chatgeminiapp.presentation.gemini_chat.chats.components.chats_layouts.NavigationDrawerSheet
 import com.example.chatgeminiapp.presentation.gemini_chat.chats.components.chats_actions.RenameChatsDialog
+import com.example.chatgeminiapp.presentation.gemini_chat.chats.components.chats_displays.ChatsEditProfileDialogForm
+import com.example.chatgeminiapp.presentation.gemini_chat.chats.components.chats_displays.ProfileDialog
 import com.example.chatgeminiapp.presentation.gemini_chat.chats.components.chats_displays.StartUpChatList
+import com.example.chatgeminiapp.presentation.profile.ProfileEvent
+import com.example.chatgeminiapp.presentation.profile.components.profile_actions.EditProfileDialog
 import com.example.chatgeminiapp.ui.theme.ChatGeminiAppTheme
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
@@ -69,11 +73,14 @@ fun ChatsScreen(
     modifier: Modifier = Modifier,
     state: ChatsState,
     event: (ChatsEvent) -> Unit,
-    navigateToImageSelector: (String) -> Unit = {},
+
+     onNavigateToProfile: (Long) -> Unit = {}
 ) {
     // Init
     var showChatsActionsBottomSheet: Boolean by remember { mutableStateOf(false) }
     var showRenameChatsDialog: Boolean by rememberSaveable { mutableStateOf(false) }
+    var showProfileDialog: Boolean by remember { mutableStateOf(false) }
+    var showEditProfileDialog: Boolean by remember { mutableStateOf(false) }
     var showDeleteChatsDialog: Boolean by remember { mutableStateOf(false) }
     var showImageSelectorBottomSheet: Boolean by remember { mutableStateOf(false) }
     val navigationDrawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
@@ -152,6 +159,9 @@ fun ChatsScreen(
                             delay(fastAnim1.toLong())
                             showChatsActionsBottomSheet = true
                         }
+                    },
+                    onProfileAction = {
+                        showProfileDialog = true
                     }
                 )
             },
@@ -238,10 +248,27 @@ fun ChatsScreen(
                     )
 
                 }
-
-            }
+}
 
             // Floating element
+            if (showProfileDialog) {
+                ProfileDialog(
+                    username = "Dwitama",
+                    apiKey = GEMINI_API_KEY,
+                    onDismiss = { showProfileDialog = false },
+                    onEdit = { showEditProfileDialog = true },
+                    onLogOut = { onNavigateToProfile(1) }
+                )
+            }
+
+            if (showEditProfileDialog) {
+                ChatsEditProfileDialogForm(
+                    onDismiss = { showEditProfileDialog = false }
+                )
+            }
+
+
+
             if (showChatsActionsBottomSheet && state.selectedGroup != null) {
                 ChatsActionsBottomSheet(
                     chatGroupId = state.selectedGroup,
